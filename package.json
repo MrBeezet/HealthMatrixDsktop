@@ -1,0 +1,16 @@
+{
+  "name": "healthmatrixdesktop",
+  "version": "1.0.0",
+  "description": "HealthMatrix desktop application",
+  "main": "dash.js",
+  "scripts": {
+    "start": "node index.js" // For Node.js apps
+    // Or for React apps
+    // "start": "react-scripts start"
+    // Or for Electron apps
+    // "start": "electron ."
+  },
+  "dependencies": {
+    // Add dependencies here
+  }
+}

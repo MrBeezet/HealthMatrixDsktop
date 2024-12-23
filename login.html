@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthMatrix - Login</title>
+  <style>
+    body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f8fb;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background-color: #0056a6;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.logo {
+  margin: 0;
+}
+
+/* Login Container */
+.login-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #0056a6;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  background-color: #0056a6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #00458e;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #e9eff5;
+}
+
+.footer a {
+  color: #0056a6;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">HealthMatrix</h1>
+  </header>
+  <main class="login-container">
+    <form class="login-form">
+      <h2>Login</h2>
+      <label for="staff-id">Staff ID</label>
+      <input type="text" id="staff-id" placeholder="Enter your Staff ID" required>
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+      
+      <button type="submit" class="btn-primary">Login</button>
+    </form>
+  </main>
+  <footer class="footer">
+    <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>
+  </footer>
+</body>
+</html>
