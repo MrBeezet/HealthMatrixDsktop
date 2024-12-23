@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Patient - HealthMatrix</title>
+</head>
+<style>
+    /* General Styles */
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9fc; /* Light background for a clean look */
+  color: #333; /* Neutral text color */
+}
+
+header {
+  background-color: #0078d7; /* Primary color (same as login and dashboard) */
+  color: #fff; /* White text for contrast */
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+/* Main Section */
+main {
+  padding: 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #ffffff; /* White card-like form container */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for form */
+  border-radius: 8px;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-size: 1rem;
+  color: #0078d7; /* Primary color for label text */
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #0078d7; /* Primary focus color */
+  outline: none;
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button#savePatient {
+  background-color: #0078d7; /* Primary button */
+  color: #fff;
+}
+
+button#savePatient:hover {
+  background-color: #005fa3; /* Darker shade on hover */
+}
+
+button#cancel {
+  background-color: #f44336; /* Red cancel button */
+  color: #fff;
+}
+
+button#cancel:hover {
+  background-color: #d32f2f; /* Darker shade on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  main {
+    padding: 15px;
+  }
+
+  form {
+    gap: 15px;
+  }
+}
+</style>
+<body>
+  <header>
+    <h1>Add New Patient</h1>
+  </header>
+  <main>
+    <form id="patientForm">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName">
+      <br>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName">
+      <br>
+      <!-- Add other fields -->
+      <button id="savePatient">Save</button>
+      <button id="cancel">Cancel</button>
+    </form>
+  </main>
+</body>
+<script src="./addPatient.js"></script>
+</html>

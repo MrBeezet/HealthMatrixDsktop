@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthMatrix Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<style>
+    /* General Styles */
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9fc; /* Subtle light background for clean visuals */
+  color: #333; /* Neutral text color */
+}
+
+/* Header Styling */
+header {
+  background-color: #0078d7; /* Primary color */
+  color: #fff; /* White text for contrast */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard Main Section */
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* Statistics Section */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stats .card {
+  flex: 1 1 calc(25% - 20px);
+  background-color: #ffffff; /* White cards */
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stats .card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #0078d7; /* Primary color */
+}
+
+.stats .card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Charts Section */
+.charts {
+  margin-top: 40px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.charts h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #0078d7; /* Primary color */
+}
+
+/* Recently Created Patients */
+.recent-patients {
+  margin-top: 40px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recent-patients h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #0078d7; /* Primary color */
+}
+
+.recent-patients table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recent-patients th, .recent-patients td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.recent-patients th {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.recent-patients tr:hover {
+  background-color: #f9f9fc;
+}
+
+.recent-patients .view-all {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0078d7; /* Primary color */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.recent-patients .view-all:hover {
+  background-color: #005fa3; /* Darker shade on hover */
+}
+
+/* Quick Actions */
+.quick-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.quick-actions button {
+  flex: 1;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 10px solid black;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.quick-actions .add-patient {
+  background-color: #0078d7; /* Primary action button */
+}
+
+.quick-actions .add-patient:hover {
+  background-color: #005fa3;
+}
+
+.quick-actions .view-database {
+  background-color: #28a745; /* Green for secondary action */
+}
+
+.quick-actions .view-database:hover {
+  background-color: #218838;
+}
+
+.quick-actions .logout {
+  background-color: #f44336; /* Red for logout */
+}
+
+.quick-actions .logout:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+  }
+
+  .quick-actions {
+    flex-direction: column;
+  }
+}
+</style>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">HealthMatrix</div>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="addPatient.html">Add Patient</a>
+            <a href="patientDatabase.html">Patient Database</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Statistics Section -->
+        <section class="stats">
+            <div class="card">
+                <h3>Total Patients</h3>
+                <p>1,245</p>
+            </div>
+            <div class="card">
+                <h3>Patients Admitted Last Week</h3>
+                <p>78</p>
+            </div>
+            <div class="card">
+                <h3>In-Patients</h3>
+                <p>420</p>
+            </div>
+            <div class="card">
+                <h3>Out-Patients</h3>
+                <p>825</p>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts">
+            <h3>Patient Admission Trends</h3>
+            <canvas id="admissionsChart" width="400" height="200"></canvas>
+        </section>
+
+        <!-- Recently Created Patients Section -->
+        <section class="recent-patients">
+            <h3>Recently Created Patients</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Name</th>
+                        <th>Admission Date</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>John Doe</td>
+                        <td>2024-12-20</td>
+                        <td>In-Patient</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Jane Smith</td>
+                        <td>2024-12-18</td>
+                        <td>Out-Patient</td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>Michael Brown</td>
+                        <td>2024-12-17</td>
+                        <td>In-Patient</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a class="view-all" href="patientDatabase.html">View All Patients</a>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <button class="add-patient" onclick="window.location.href='addPatient.html'">Add New Patient</button>
+            <button class="view-database" onclick="window.location.href='patientDatabase.html'">View Patient Database</button>
+            <button class="logout" onclick="window.location.href='login.html'">Logout</button>
+        </section>
+    </main>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Chart.js Example for Admissions Trends
+        const ctx = document.getElementById('admissionsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Admissions',
+                    data: [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+                    borderColor: '#0078d7',
+                    backgroundColor: 'rgba(0, 120, 215, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
