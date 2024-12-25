@@ -1,21 +1,18 @@
-const { ipcRenderer } = require('electron');
-
-// Save button click handler
-document.getElementById('savePatient').addEventListener('click', () => {
+document.getElementById('addPatientForm').addEventListener('submit', (e) => {
+  e.preventDefault();
   const patientData = {
-    firstName: document.getElementById('firstName').value,
-    lastName: document.getElementById('lastName').value,
-    // Add other fields as necessary
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      dob: document.getElementById('dob').value,
+      gender: document.getElementById('gender').value,
+      condition: document.getElementById('condition').value,
   };
-
-  // Send patient data to the main process (optional for database saving)
-  ipcRenderer.send('save-patient-data', patientData);
-
-  // Optionally navigate back to the dashboard
-  ipcRenderer.send('navigate-to-dashboard');
-});
-
-// Cancel button click handler
-document.getElementById('cancel').addEventListener('click', () => {
-  ipcRenderer.send('navigate-to-dashboard'); // Navigate back to the dashboard
+  fetch('/api/addPatient', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(patientData),
+  })
+      .then(response => response.json())
+      .then(data => alert('Patient added successfully!'))
+      .catch(error => alert('Error adding patient.'));
 });

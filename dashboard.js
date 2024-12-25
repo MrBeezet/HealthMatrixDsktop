@@ -1,13 +1,9 @@
-const { ipcRenderer } = require('electron');
-
-document.getElementById('addPatient').addEventListener('click', () => {
-  ipcRenderer.send('navigate-to-add-patient');
-});
-
-document.getElementById('patientDatabase').addEventListener('click', () => {
-  ipcRenderer.send('navigate-to-patient-database');
-});
-
-document.getElementById('logout').addEventListener('click', () => {
-  ipcRenderer.send('navigate-to-login');
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  fetch('/api/logout', { method: 'POST' })
+      .then(() => {
+          // Clear session and redirect to login
+          localStorage.clear();
+          window.location.href = 'login.html';
+      })
+      .catch(error => alert('Error logging out.'));
 });
